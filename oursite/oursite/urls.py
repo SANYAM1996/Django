@@ -16,10 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
-
+# laying the pipeline.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name = 'index'),
     path('about',views.about,name = 'about'),
-    path('website',views.website,name = 'website')
+    path('website',views.website,name = 'website'),
+    path('removepunc',views.removepunc,name ='removepunc'),
+    path('capfirst',views.capfirst,name = 'capfirst' ),
+    path('newlineremove',views.newlineremove,name = 'newlineremove'),
+    path('spaceremove',views.spaceremove,name = 'spaceremove'),
+    path('charcount',views.charcount,name = 'charcount'),
+
 ]
