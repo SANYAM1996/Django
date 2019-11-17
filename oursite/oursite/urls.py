@@ -23,9 +23,6 @@ urlpatterns = [
     path('about',views.about,name = 'about'),
     path('website',views.website,name = 'website'),
     path('removepunc',views.removepunc,name ='removepunc'),
-    path('capfirst',views.capfirst,name = 'capfirst' ),
-    path('newlineremove',views.newlineremove,name = 'newlineremove'),
-    path('spaceremove',views.spaceremove,name = 'spaceremove'),
-    path('charcount',views.charcount,name = 'charcount'),
-
+    path('analyze',views.analyze,name = 'analyze')
+    
 ]
