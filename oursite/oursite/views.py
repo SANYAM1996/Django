@@ -12,21 +12,42 @@ def index(request):
 def analyze(request):
     # get the text
     djtext = request.GET.get('text','default')
+    # check checkbox values
     removepunc = request.GET.get('removepunc','off')
-    print(removepunc)
-    print(djtext)
-    # analyzed = djtext
-    # analyze the text
+    fullcaps = request.GET.get('fullcaps','off')
+    newlineremover = request.GET.get('newlineremover','off')
+    extraspaceremover = request.GET.get('extraspaceremover','off')
+    
+    # check which checkbox is on
     if removepunc == 'on':
         Punctuations = '''!()-[]{};:'"\,<>.?@#$%^&*+_~'''
         analyzed = ""
         for char in djtext:
             if char not in Punctuations:
                 analyzed = analyzed + char
-        params = {'purpose':'Removed Punctuations','analyzed_text':analyzed}
+        params = {'purpose':'removed newlines','analyzed_text':analyzed}
+        # analyzed the text
         return render('request','analyze.html',params)
+    elif(fullcaps == 'on'):
+        analyzed = ''
+        analyzed = analyzed + char.upper()
+    elif(newlineremover == 'on'):
+        analyzed = ''
+        for char in djtext:
+            if char !="\n":
+
+
+
+                analyzed = analyzed + char
+    elif(extraspaceremover == 'on'):
+        analyzed = ''
+        for index,char in enumerate (djtext):
+            if djtext[index] == ' ' and djtext[index + 1] == " ":
+                pass
+
     else:
-        return HttpResponse('Error')
+        analyzed = analyzed + char
+    
 # def capfirst(request):
 #     return HttpResponse("capitalize first")
 # def newlineremove(request):
