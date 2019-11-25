@@ -11,12 +11,12 @@ def index(request):
 #     return HttpResponse('''<h1>GO TO WEBSITE</h1<a href ="https://www.youtube.com/results?search_query=call+of+duty+modern+warfare+playlist+"> Django code</a>''')
 def analyze(request):
     # get the text
-    djtext = request.GET.get('text','default')
+    djtext = request.POST.get('text','default')
     # check checkbox values
-    removepunc = request.GET.get('removepunc','off')
-    fullcaps = request.GET.get('fullcaps','off')
-    newlineremover = request.GET.get('newlineremover','off')
-    extraspaceremover = request.GET.get('extraspaceremover','off')
+    removepunc = request.POST.get('removepunc','off')
+    fullcaps = request.POST.get('fullcaps','off')
+    newlineremover = request.POST.get('newlineremover','off')
+    extraspaceremover = request.POST.get('extraspaceremover','off')
     
     # check which checkbox is on
     if removepunc == 'on':
@@ -34,7 +34,8 @@ def analyze(request):
     elif(newlineremover == 'on'):
         analyzed = ''
         for char in djtext:
-            if char !="\n":
+            if char !="\n" and char!='\r':
+                
 
 
 
